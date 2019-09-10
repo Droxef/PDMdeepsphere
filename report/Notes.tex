@@ -89,6 +89,7 @@
 	{\large % Course Code
 	\textsc{Projet de Master - 2019 - Section de Microtechnique\\[1 cm]~}\\[1 cm]				% Course Name 
     }
+    % \includegraphics[width=0.6\linewidth]{figures/EPFL_Logo_Digital_RGB_PROD.png}
 	\rule{\linewidth}{0.2 mm} \\[1 cm]
 	{\huge \bfseries \thetitle}\\
     \vspace{10pt}
@@ -946,12 +947,57 @@ The smaller inference time for Esteves is due to the use of a local filter, and 
         Esteves \emph{sphericalcnn} & 79.18 & 79.36 & 500k & 9.8ms & 2h52\\ \hline
         Deepsphere \emph{Cohen-like} & 77.86 & 77.90 & 170k & 17.5ms & 9h43\\
         Deepsphere \emph{local filter} & 76.83 & 76.66 & 60k & 2.8ms & 1h37\\
-        Deepsphere \emph{equiangular} & 73.36 & 73.67 & 190k & 0.98ms & 43m \\
+        Deepsphere \emph{equiangular} & 79.25 & 79.36 & 190k & 0.98ms & 2h33m \\
         Deepsphere \emph{Optimal} & 80.42 & 80.65 & 190k & 1.0ms & 48m
     \end{tabular}
     \caption{Performance of different models (described in section~\ref{sec:shrec_anal} on SHREC17 dataset as classification task. The numbers in parentheses are got using incorrect parameters in contrast of the publication's results~\cite{cohen_spherical_2018}}
     \label{tab:SHREC17_class}
 \end{table}
+
+% \begin{table}[ht]
+%     \centering
+%     \begin{tabular}{l|c c r c r r}
+%         \multicolumn{1}{l}{} & \multicolumn{2}{c}{performance} & \multicolumn{2}{c}{size} & \multicolumn{2}{c}{speed}\\
+%         \cmidrule(lr){2-3} \cmidrule(lr){4-5} \cmidrule(lr){6-7}
+%         \multicolumn{1}{l}{Method} & Accuracy & mAP & params & features & inference & training \\ \hline
+%         % Cohen \emph{s2cnn} & (73.10) & (72.86) & 1.4M & (38ms) & (65h)\\
+%         Cohen \emph{s2cnn\_simple} & 78.59 & 66.5 & 400k & $2\cdot 64$ & 12ms & 32h\\
+%         Esteves \emph{sphericalcnn} & 79.18 & 68.5 & 500k & $8$ & 9.8ms & 2h52\\ \hline
+%         % Deepsphere \emph{Cohen-like} & 77.86 & 65.4 & 170k & $ \sqrt{3}N_{side}$ & 17.5ms & 9h43\\
+%         % Deepsphere \emph{local filter} & 76.83 & 76.66 & 60k & 2.8ms & 1h37\\
+%         % Deepsphere \emph{equiangular} & 79.25 & 66.5 & 190k & 0.98ms & 2h33m \\
+%         Deepsphere \emph{Optimal} & 80.42 & 68.6 & 190k & $4$ & 1.0ms & 48m
+%     \end{tabular}
+%     % \caption{Performance of different models (described in section~\ref{sec:shrec_anal} on SHREC17 dataset as classification task. The numbers in parentheses are got using incorrect parameters in contrast of the publication's results~\cite{cohen_spherical_2018}}
+%     \label{tab:SHREC17_class2}
+% \end{table}
+\begin{table}
+\begin{tabular}{l|c c c c c c c}
+        \multicolumn{1}{l}{} & \multicolumn{4}{c}{Accuracy} & \multicolumn{3}{c}{Average Precision}\\
+        \cmidrule(lr){2-5}\cmidrule(lr){6-8}
+        \multicolumn{1}{l}{Method} & BG & TC & AR & mean & TC & AR & mean \\ \hline
+        %Mudigonda et al. & 97 & 74 & 65 & 78.67 & - & - & - \\
+        Jiang et al. & 97 & 94 & 93 & 94.67 & - & - & -\\
+        Cohen et al. (S2R) & 97.3 & 97.8 & 97.3 & 97.5 & - & -& 68.6\\
+        Cohen et al. (R2R) & 97.4 & 97.9 & 97.8 & 97.7 & - & -& 75.9\\ \hline
+        % Deepsphere \emph{Cohen-like} & 77.86 & 65.4 & 170k & $ \sqrt{3}N_{side}$ & 17.5ms & 9h43\\
+        % Deepsphere \emph{local filter} & 76.83 & 76.66 & 60k & 2.8ms & 1h37\\
+        % Deepsphere \emph{equiangular} & 79.25 & 66.5 & 190k & 0.98ms & 2h33m \\
+        %Deepsphere & 97.9 & 96.0 & 97.9 & 97.3 & 58.32 & 92.51 & 75.42 \\
+        % DeepSphere & 98.0 & 99.2 & 97.4 & 98.2 & 62.13 & 96.91 & 79.5
+%        DeepSphere & 98.2\pm 0.5 & 97.4\pm 1.1 & 97.7\pm 0.7 & 97.8\pm 0.3 & 58.88\pm 3.17 & 95.41\pm 1.51 & 77.15\pm 1.94
+    \end{tabular}
+    \caption{Climate pattern segmentation accuracy (\%) for BG, TC
+and AR classes plus mean accuracy, average precision for positive classes and mean as well.}
+\end{table}
+
+% print(np.mean([98.0037, 99.022, 97.9, 98.05081171, 99.446252, 98.4880191]), np.std([98.0037, 99.022, 97.9, 98.05081171, 99.446252, 98.4880191]))
+% print(np.mean([99.1810, 97.2590, 96.0, 97.30511752, 94.76495, 97.87860756]), np.std([99.1810, 97.2590, 96.0, 97.30511752, 94.76495, 97.87860756]))
+% print(np.mean([97.4420, 96.7346, 97.9, 98.63355243, 88.89887, 98.15007994]), np.std([97.4420, 96.7346, 97.9, 98.63355243, 88.89887, 98.15007994]))
+% print(np.mean([97.6721, 98.2089, 97.3, 97.99649, 94.37, 98.1722355306912]), np.std([97.6721, 98.2089, 97.3, 97.99649, 94.37, 98.1722355306912]))
+% print(np.mean([0.62133, 0.62133, 0.5832, 0.58263467, 0.535618, 0.63429263, 0.61089104]), np.std([0.62133, 0.62133, 0.5832, 0.58263467, 0.535618, 0.63429263, 0.61089104]))
+% print(np.mean([0.96912, 0.96023, 0.9251, 0.95913965, 0.956805, 0.960448, 0.96220453]), np.std([0.96912, 0.96023, 0.9251, 0.95913965, 0.956805, 0.960448, 0.96220453]))
+% print(np.mean([0.79522, 0.79078, 0.7542, 0.77089, 0.74621, 0.79737, 0.786547789]), np.std([0.79522, 0.79078, 0.7542, 0.77089, 0.74621, 0.79737, 0.786547789]))
 
 \paragraph*{}
 In the case of the shape retrieval task, an additional loss was added to improve the performance and reduce the overfit. Inspired by Esteves~\cite{esteves_learning_2017}, the triplet loss promotes smaller distance between similar results and penalizes the distance between instances that are different. Thus, only the \emph{Optimal} architecture had this extra loss.
@@ -976,7 +1022,7 @@ Concerning the \emph{equiangular} run, even using the \emph{Optimal} architectur
     Esteves \emph{sphericalcnn} & 0.717 & 0.737 & - & 0.685 & 0.450 & 0.550 & - & 0.444\\ \hline
     Deepsphere \emph{Cohen-like} & 0.695 & 0.688 & 0.684 & 0.654 & 0.424 & 0.478 & 0.423 & 0.389\\
     Deepsphere \emph{local filter} & 0.684 & 0.682 & 0.676 & 0.643 & 0.410 & 0.452 & 0.398 & 0.354 \\
-    Deepsphere \emph{equiangular} & 0.642 & 0.629 & 0.627 & 0.589 & 0.370 & 0.423 & 0.370 & 0.322 \\
+    Deepsphere \emph{equiangular} & 0.709 & 0.700 & 0.698 & 0.665 & 0.439 & 0.489 & 0.439 & 0.403 \\
     Deepsphere \emph{Optimal} & 0.725 & 0.717 & 0.715 & 0.686 & 0.475 & 0.508 & 0.468 & 0.428
     \end{tabular}
     \caption{Performance of different models over SHREC17 perturbed dataset as a retrieval task, using the official script of the competition. The first two models are high-scorer of the competition.}
