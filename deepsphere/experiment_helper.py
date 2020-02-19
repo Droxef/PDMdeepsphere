@@ -97,14 +97,17 @@ def hp_split(img, order, nest=True):
     if not nest:
         raise NotImplementedError('Implement the change of coordinate.')
     nsample = 12 * order**2
+    if order==0:
+        return img
     return img.reshape([nsample, npix // nsample])
 
 
-def get_training_data(sigma, order, data_path='data/same_psd/'):
+def get_training_data(sigma, order, data_path='data/same_psd/', smooth=True):
     # Load the data
     # data_path = 'data/same_psd/'
-    ds1 = np.load(data_path + 'smoothed_class1_sigma{}.npz'.format(sigma))['arr_0']
-    ds2 = np.load(data_path + 'smoothed_class2_sigma{}.npz'.format(sigma))['arr_0']
+    filt = 'smoothed' if smooth else 'highpassed'
+    ds1 = np.load(data_path + filt + '_class1_sigma{}.npz'.format(sigma))['arr_0']
+    ds2 = np.load(data_path + filt + '_class2_sigma{}.npz'.format(sigma))['arr_0']
     datasample = dict()
     datasample['class1'] = np.vstack(
         [hp_split(el, order=order) for el in ds1])
@@ -123,9 +126,10 @@ def get_training_data(sigma, order, data_path='data/same_psd/'):
     return x_raw, labels, x_raw_std
 
 
-def get_testing_data(sigma, order, sigma_noise, x_raw_std=None, data_path='data/'):
-    ds1 = np.load(data_path+'same_psd_testing/smoothed_class1_sigma{}.npz'.format(sigma))['arr_0']
-    ds2 = np.load(data_path+'same_psd_testing/smoothed_class2_sigma{}.npz'.format(sigma))['arr_0']
+def get_testing_data(sigma, order, sigma_noise, x_raw_std=None, data_path='data/', smooth=True):
+    filt = 'smoothed' if smooth else 'highpassed'
+    ds1 = np.load(data_path+'same_psd_testing/' + filt + '_class1_sigma{}.npz'.format(sigma))['arr_0']
+    ds2 = np.load(data_path+'same_psd_testing/' + filt + '_class2_sigma{}.npz'.format(sigma))['arr_0']
 
     datasample = dict()
     datasample['class1'] = np.vstack(

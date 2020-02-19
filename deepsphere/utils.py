@@ -13,13 +13,15 @@ from scipy import sparse, spatial
 import matplotlib.pyplot as plt
 import healpy as hp
 
+from pygsp.graphs import NNGraph, SphereIcosahedron, SphereEquiangular, SphereHealpix
 
 if sys.version_info[0] > 2:
     from urllib.request import urlretrieve
 else:
-    from urllib import urlretrieve
-
-
+    from urllib import urlretrieve    
+    
+    
+    
 def healpix_weightmatrix(nside=16, nest=True, indexes=None, dtype=np.float32, std=None, full=False):
     """Return an unnormalized weight matrix for a graph using the HEALPIX sampling.
 
@@ -107,6 +109,8 @@ def healpix_weightmatrix(nside=16, nest=True, indexes=None, dtype=np.float32, st
     else:
         kernel_width = std
     weights = np.exp(-distances / (2 * kernel_width))
+    
+#     weights[weights>0]=1
 
     # Similarity proposed by Renata & Pascal, ICCV 2017.
     # weights = 1 / distances
@@ -130,8 +134,6 @@ def healpix_weightmatrix(nside=16, nest=True, indexes=None, dtype=np.float32, st
 
 
 def equiangular_weightmatrix(bw=64, indexes=None, dtype=np.float32):
-    # define a way to read the grid
-    # The first 8 points are the same points. Do we need them?
     if indexes is None:
         indexes = range((2*bw)**2)
     npix = len(indexes)  # Number of pixels.
@@ -151,17 +153,19 @@ def equiangular_weightmatrix(bw=64, indexes=None, dtype=np.float32):
     z = ct
     coords = np.vstack([x.flatten(), y.flatten(), z.flatten()]).transpose() 
     coords = np.asarray(coords, dtype=dtype)
+    npix = len(coords)
     
+#     distances = spatial.distance.cdist(coords, coords)**2
     
     def south(x, bw):
-        if x >= (2*bw)*(2*bw-1):
-            return north((x+bw)%(2*bw)+(2*bw)*(2*bw),bw)
+        if x >= npix - 2*bw:
+            return (x + bw)%(2*bw) + npix - 2*bw
         else:
             return x + 2*bw
         
     def north(x, bw):
         if x < 2*bw:
-            return south((x+bw)%(2*bw),bw)
+            return (x + bw)%(2*bw)
         else:
             return x - 2*bw
         
@@ -179,14 +183,14 @@ def equiangular_weightmatrix(bw=64, indexes=None, dtype=np.float32):
     col_index=[]
     for ind in indexes:
         # first line is the same point, so is connected to all points of second line
-        if ind < 2* bw:
-            neighbor = np.arange(2*bw)+2*bw
-        elif ind < 4*bw:
-            neighbor = [south(west(ind,bw),bw), west(ind,bw), east(ind,bw), south(east(ind,bw),bw), south(ind,bw)]
-            neighbor += list(range(2*bw))
-            #print(neighbor)
-        else:
-            neighbor = [south(west(ind,bw),bw), west(ind,bw), north(west(ind,bw), bw), north(ind,bw), 
+#         if ind < 2* bw:
+#             neighbor = np.arange(2*bw)+2*bw
+#         elif ind < 4*bw:
+#             neighbor = [south(west(ind,bw),bw), west(ind,bw), east(ind,bw), south(east(ind,bw),bw), south(ind,bw)]
+#             neighbor += list(range(2*bw))
+#             #print(neighbor)
+#         else:
+        neighbor = [south(west(ind,bw),bw), west(ind,bw), north(west(ind,bw), bw), north(ind,bw), 
                         north(east(ind,bw),bw), east(ind,bw), south(east(ind,bw),bw), south(ind,bw)]
         neighbors.append(neighbor)
         col_index += list(neighbor)
@@ -194,27 +198,33 @@ def equiangular_weightmatrix(bw=64, indexes=None, dtype=np.float32):
     col_index = np.asarray(col_index)
     
     #col_index = neighbors.reshape((-1))
-    row_index = np.hstack([np.repeat(indexes[:2*bw], 2*bw), np.repeat(indexes[2*bw:4*bw], 2*bw+5), 
-                          np.repeat(indexes[4*bw:], 8)])
+#     row_index = np.hstack([np.repeat(indexes[:2*bw], 2*bw), np.repeat(indexes[2*bw:4*bw], 2*bw+5), 
+#                           np.repeat(indexes[4*bw:], 8)])
+    row_index = np.hstack([np.repeat(indexes, 8)])
     
     distances = np.sum((coords[row_index] - coords[col_index])**2, axis=1)
     # slower: np.linalg.norm(coords[row_index] - coords[col_index], axis=1)**2
 
     # Compute similarities / edge weights.
-    kernel_width = np.mean(distances)
-    weights = np.exp(-distances / (2 * kernel_width))
+#     kernel_width = np.mean(distances)
+#     weights = np.exp(-distances / (2 * kernel_width))
 
     # Similarity proposed by Renata & Pascal, ICCV 2017.
-    # weights = 1 / distances
+    weights = 1 / distances
 
     # Build the sparse matrix.
     W = sparse.csr_matrix(
         (weights, (row_index, col_index)), shape=(npix, npix), dtype=dtype)
-    
-    # adjustments
-    mat = W[:2*bw,2*bw:4*bw]*5/(2*bw)
-    W[:2*bw,2*bw:4*bw] = mat
-    W[2*bw:4*bw,:2*bw] = mat.T
+#     W=weights
+#     for i in range(np.alen(W)):
+#         W[i, i] = 0.
+# #     k = np.exp(0)
+# #     W[W < k] = 0
+#     W = sparse.csr_matrix(W, dtype=dtype)
+#     # adjustments
+#     mat = W[:2*bw,2*bw:4*bw]*5/(2*bw)
+#     W[:2*bw,2*bw:4*bw] = mat
+#     W[2*bw:4*bw,:2*bw] = mat.T
     
     return W
 
@@ -237,30 +247,35 @@ def healpix_graph(nside=16,
                   lap_type='normalized',
                   indexes=None,
                   use_4=False,
-                  dtype=np.float32):
+                  dtype=np.float32, 
+                  new=True):
     """Build a healpix graph using the pygsp from NSIDE."""
-    from pygsp import graphs
-
-    if indexes is None:
-        indexes = range(4*bw**2)
-
-    # 1) get the coordinates
-    npix = hp.nside2npix(nside)  # number of pixels: 12 * nside**2
-    pix = range(npix)
-    x, y, z = hp.pix2vec(nside, pix, nest=nest)
-    coords = np.vstack([x, y, z]).transpose()[indexes]
-    # 2) computing the weight matrix
-    if use_4:
-        raise NotImplementedError()
-        W = build_matrix_4_neighboors(nside, indexes, nest=nest, dtype=dtype)
+    
+    if new:
+        G = SphereHealpix(nside=nside, indexes=indexes, nest=nest, lap_type=lap_type)
     else:
-        W = healpix_weightmatrix(
-            nside=nside, nest=nest, indexes=indexes, dtype=dtype)
-    # 3) building the graph
-    G = graphs.Graph(
-        W,
-        lap_type=lap_type,
-        coords=coords)
+        from pygsp import graphs
+
+        if indexes is None:
+            indexes = range(4*bw**2)
+
+        # 1) get the coordinates
+        npix = hp.nside2npix(nside)  # number of pixels: 12 * nside**2
+        pix = range(npix)
+        x, y, z = hp.pix2vec(nside, pix, nest=nest)
+        coords = np.vstack([x, y, z]).transpose()[indexes]
+        # 2) computing the weight matrix
+        if use_4:
+            raise NotImplementedError()
+            W = build_matrix_4_neighboors(nside, indexes, nest=nest, dtype=dtype)
+        else:
+            W = healpix_weightmatrix(
+                nside=nside, nest=nest, indexes=indexes, dtype=dtype)
+        # 3) building the graph
+        G = graphs.Graph(
+            W,
+            lap_type=lap_type,
+            coords=coords)
     return G
 
 def equiangular_graph(bw=64,
@@ -269,36 +284,36 @@ def equiangular_graph(bw=64,
                   use_4=False,
                   dtype=np.float32):
     """Build a equiangular graph using the pygsp from given bandwidth."""
-    from pygsp import graphs
+    G = SphereEquiangular(bandwidth=bw, sampling='SOFT')
 
-    if indexes is None:
-        indexes = range(4*bw**2)
+#     if indexes is None:
+#         indexes = range(4*bw**2)
 
-    # 1) get the coordinates    
-    beta = np.arange(2 * bw) * np.pi / (2. * bw)  # Driscoll-Heally
-    alpha = np.arange(2 * bw) * np.pi / bw
-    theta, phi = np.meshgrid(*(beta, alpha),indexing='ij')
-    ct = np.cos(theta)
-    st = np.sin(theta)
-    cp = np.cos(phi)
-    sp = np.sin(phi)
-    x = st * cp
-    y = st * sp
-    z = ct
-    coords = np.vstack([x.flatten(), y.flatten(), z.flatten()]).transpose() 
-    coords = np.asarray(coords, dtype=dtype)[indexes]
-    # 2) computing the weight matrix
-    if use_4:
-        raise NotImplementedError()
-        W = build_matrix_4_neighboors(nside, indexes, nest=nest, dtype=dtype)
-    else:
-        W = equiangular_weightmatrix(
-            bw=bw, indexes=indexes, dtype=dtype)
-    # 3) building the graph
-    G = graphs.Graph(
-        W,
-        lap_type=lap_type,
-        coords=coords)
+#     # 1) get the coordinates    
+#     beta = np.pi * (2 * np.arange(2 * bw) + 1) / (4. * bw) #SOFT
+#     alpha = np.arange(2 * bw) * np.pi / bw
+#     theta, phi = np.meshgrid(*(beta, alpha),indexing='ij')
+#     ct = np.cos(theta)
+#     st = np.sin(theta)
+#     cp = np.cos(phi)
+#     sp = np.sin(phi)
+#     x = st * cp
+#     y = st * sp
+#     z = ct
+#     coords = np.vstack([x.flatten(), y.flatten(), z.flatten()]).transpose() 
+#     coords = np.asarray(coords, dtype=dtype)[indexes]
+#     # 2) computing the weight matrix
+#     if use_4:
+#         raise NotImplementedError()
+#         W = build_matrix_4_neighboors(nside, indexes, nest=nest, dtype=dtype)
+#     else:
+#         W = equiangular_weightmatrix(
+#             bw=bw, indexes=indexes, dtype=dtype)
+#     # 3) building the graph
+#     G = graphs.Graph(
+#         W,
+#         lap_type=lap_type,
+#         coords=coords)
     return G
 
 
@@ -309,14 +324,21 @@ def healpix_laplacian(nside=16,
                       dtype=np.float32,
                       use_4=False, 
                       std=None,
-                      full=False):
+                      full=False,
+                      new=True,
+                      n_neighbors=8):
     """Build a Healpix Laplacian."""
-    if use_4:
-        W = build_matrix_4_neighboors(nside, indexes, nest=nest, dtype=dtype)
+    if new:
+        G = SphereHealpix(nside=nside, indexes=indexes, nest=nest, n_neighbors=n_neighbors)
+        G.compute_laplacian(lap_type)
+        L = sparse.csr_matrix(G.L, dtype=dtype)
     else:
-        W = healpix_weightmatrix(
-            nside=nside, nest=nest, indexes=indexes, dtype=dtype, std=std, full=full)
-    L = build_laplacian(W, lap_type=lap_type)
+        if use_4:
+            W = build_matrix_4_neighboors(nside, indexes, nest=nest, dtype=dtype)
+        else:
+            W = healpix_weightmatrix(
+                nside=nside, nest=nest, indexes=indexes, dtype=dtype, std=std, full=full)
+        L = build_laplacian(W, lap_type=lap_type)
     return L
 
 def equiangular_laplacian(bw=16,
@@ -325,13 +347,33 @@ def equiangular_laplacian(bw=16,
                           dtype=np.float32,
                           use_4=False):
     """Build a Equiangular Laplacian."""
-    if use_4:
-        raise NotImplementedError()
-    else:
-        W = equiangular_weightmatrix(
-            bw=bw, indexes=indexes, dtype=dtype)
-    L = build_laplacian(W, lap_type=lap_type)# see if change
+    G = SphereEquiangular(bandwidth=bw, sampling='SOFT')
+    G.compute_laplacian(lap_type)
+    L = sparse.csr_matrix(G.L, dtype=dtype)
+#     if use_4:
+#         raise NotImplementedError()
+#     else:
+#         W = equiangular_weightmatrix(
+#             bw=bw, indexes=indexes, dtype=dtype)
+#     L = build_laplacian(W, lap_type=lap_type)# see if change
     return L
+
+
+def icosahedron_graph(order=64,
+                  lap_type='normalized',
+                  indexes=None,
+                  use_4=False,
+                  dtype=np.float32):
+    graph = SphereIcosahedron(level=order)
+    return graph
+    
+def icosahedron_laplacian(order=0,
+                          lap_type='combinatorial',
+                          indexes=None,
+                          dtype=np.float32):
+    graph = SphereIcosahedron(level=order)
+    graph.compute_laplacian(lap_type)
+    return sparse.csr_matrix(graph.L, dtype=dtype)
 
 
 def rescale_L(L, lmax=2, scale=1):
@@ -343,7 +385,7 @@ def rescale_L(L, lmax=2, scale=1):
     return L*scale
 
 
-def build_laplacians(nsides, indexes=None, use_4=False, sampling='healpix', std=None, full=False):
+def build_laplacians(nsides, indexes=None, use_4=False, sampling='healpix', std=None, full=False, new=True, n_neighbors=8):
     """Build a list of Laplacians (and down-sampling factors) from a list of nsides."""
     L = []
     p = []
@@ -353,18 +395,39 @@ def build_laplacians(nsides, indexes=None, use_4=False, sampling='healpix', std=
         std = [std] * len(nsides)
     if not isinstance(full, list):
         full = [full] * len(nsides)
+    import time
+    lstart = time.time()
+    nside_last = -1
     for i, (nside, index, sigma, mat) in enumerate(zip(nsides, indexes, std, full)):
-        if i > 0:  # First is input dimension.
+        bw = nside
+        if isinstance(nside, tuple):
+            nside = nside[0]
+        if i > 0 and sampling != 'icosahedron':  # First is input dimension.
             p.append((nside_last // nside)**2)
+        if nside == nside_last and i < len(nsides) - 1:
+            L.append(L[-1].copy().tocoo())
+            continue
         nside_last = nside
         if i < len(nsides) - 1:  # Last does not need a Laplacian.
-            if sampling is 'healpix':
-                laplacian = healpix_laplacian(nside=nside, indexes=index, use_4=use_4, std=sigma, full=mat)
-            elif sampling is 'equiangular':
-                laplacian = equiangular_laplacian(bw=nside, indexes=index, use_4=use_4)
+            if sampling == 'healpix':
+                laplacian = healpix_laplacian(nside=nside, indexes=index, use_4=use_4, 
+                                              std=sigma, full=mat, new=new, n_neighbors=n_neighbors)
+            elif sampling == 'equiangular':
+                laplacian = equiangular_laplacian(bw=bw, indexes=index, use_4=use_4)
+            elif sampling == 'icosahedron':
+                laplacian = icosahedron_laplacian(order=nside, indexes=index)
             else:
                 raise ValueError('Unknown sampling: '+sampling)
+            print("build laplacian, time: ", time.time()-lstart)
+#             L = sparse.csr_matrix(L)
+            lmax = 1.02*sparse.linalg.eigsh(laplacian, k=1, which='LM', return_eigenvectors=False)[0]
+            laplacian = rescale_L(laplacian, lmax=lmax)
+            laplacian = laplacian.tocoo()
+            print("rescale laplacian, time: ", time.time()-lstart)
             L.append(laplacian)
+    if sampling == 'icosahedron':
+        for order in nsides[1:]:
+            p.append(10 * 4 ** order + 2)
     return L, p
 
 
@@ -380,6 +443,8 @@ def nside2indexes(nsides, order):
     order  : parameter specifying the size of the sphere part
     """
     nsample = 12 * order**2
+    if order==0:
+        nsample=1
     indexes = [np.arange(hp.nside2npix(nside) // nsample) for nside in nsides]
     return indexes
 
