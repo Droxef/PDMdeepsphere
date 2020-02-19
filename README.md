@@ -50,7 +50,7 @@ The different benchmarks are regrouped in the [Experiment](Experiments) folder, 
      MN40 experiment
     * [analyze rotation](Experiments/ModelNet40/Sphere_ModelNet40_rotation.ipynb)
     Analyze the behaviour when adding different rotation perturbations
-    
+
 3. GHCN
     * [test](Experiments/GHCN/sphere_GHCN_test.ipynb)
     Analyze of the dataset
@@ -64,13 +64,13 @@ The different benchmarks are regrouped in the [Experiment](Experiments) folder, 
     Construct an equiangular graph and analyze its properties
 
 6. Irregular pooling
-    * [Irregular_pooling](Experiments/Irregular_pooling/Irregular_pooling.ipynb) 
+    * [Irregular_pooling](Experiments/Irregular_pooling/Irregular_pooling.ipynb)
     Find ways to use pooling on random part of sphere
 
 [cached data]: (Experiments/SHREC17/demo_sphere_SHREC17-Cached_data.ipynb)
 [equiangular]: (Experiments/SHREC17/demo_sphere_SHREC17_equiangular.ipynb)
 
 
-## License & co
+## License
 
-The content of this repository is released under the terms of the [MIT license](LICENCE.txt).
+The content of this repository is released under the terms of the [MIT license](LICENSE.txt).
