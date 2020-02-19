@@ -1,4 +1,456 @@
 
+@article{boureau_theoretical_2010,
+	title = {A Theoretical Analysis of Feature Pooling in Visual Recognition},
+	abstract = {Many modern visual recognition algorithms incorporate a step of spatial ‘pooling’, where the outputs of several nearby feature detectors are combined into a local or global ‘bag of features’, in a way that preserves task-related information while removing irrelevant details. Pooling is used to achieve invariance to image transformations, more compact representations, and better robustness to noise and clutter. Several papers have shown that the details of the pooling operation can greatly inﬂuence the performance, but studies have so far been purely empirical. In this paper, we show that the reasons underlying the performance of various pooling methods are obscured by several confounding factors, such as the link between the sample cardinality in a spatial pool and the resolution at which low-level features have been extracted. We provide a detailed theoretical analysis of max pooling and average pooling, and give extensive empirical comparisons for object recognition tasks.},
+	pages = {111--118},
+	journaltitle = {Proceedings of the 27th International Conference on International Conference on Machine Learning},
+	author = {Boureau, Y-Lan and Ponce, Jean and {LeCun}, Yann},
+	date = {2010},
+	langid = {english}
+}
+
+@report{milani_about_nodate,
+	title = {About the spectrum of the Discrete Laplace-Beltrami operator on the Sphere for Rotation Equivariant Neural Networks},
+	pages = {50},
+	author = {Milani, Martino and Perraudin, Nathanaël and Defferrard, Michaël and Secchi, Piercesare and Vandergheynst, Pierre},
+	langid = {english}
+}
+
+@article{bronstein_geometric_2017,
+	title = {Geometric deep learning: going beyond Euclidean data},
+	volume = {34},
+	issn = {1053-5888},
+	url = {http://arxiv.org/abs/1611.08097},
+	doi = {10.1109/MSP.2017.2693418},
+	shorttitle = {Geometric deep learning},
+	abstract = {Many scientific fields study data with an underlying structure that is a non-Euclidean space. Some examples include social networks in computational social sciences, sensor networks in communications, functional networks in brain imaging, regulatory networks in genetics, and meshed surfaces in computer graphics. In many applications, such geometric data are large and complex (in the case of social networks, on the scale of billions), and are natural targets for machine learning techniques. In particular, we would like to use deep neural networks, which have recently proven to be powerful tools for a broad range of problems from computer vision, natural language processing, and audio analysis. However, these tools have been most successful on data with an underlying Euclidean or grid-like structure, and in cases where the invariances of these structures are built into networks used to model them. Geometric deep learning is an umbrella term for emerging techniques attempting to generalize (structured) deep neural models to non-Euclidean domains such as graphs and manifolds. The purpose of this paper is to overview different examples of geometric deep learning problems and present available solutions, key difficulties, applications, and future research directions in this nascent field.},
+	pages = {18--42},
+	number = {4},
+	journaltitle = {{IEEE} Signal Processing Magazine},
+	shortjournal = {{IEEE} Signal Process. Mag.},
+	author = {Bronstein, Michael M. and Bruna, Joan and {LeCun}, Yann and Szlam, Arthur and Vandergheynst, Pierre},
+	urldate = {2019-06-16},
+	date = {2017-07},
+	eprinttype = {arxiv},
+	eprint = {1611.08097},
+	keywords = {Computer Science - Computer Vision and Pattern Recognition}
+}
+
+@article{henaff_deep_2015,
+	title = {Deep Convolutional Networks on Graph-Structured Data},
+	url = {http://arxiv.org/abs/1506.05163},
+	abstract = {Deep Learning's recent successes have mostly relied on Convolutional Networks, which exploit fundamental statistical properties of images, sounds and video data: the local stationarity and multi-scale compositional structure, that allows expressing long range interactions in terms of shorter, localized interactions. However, there exist other important examples, such as text documents or bioinformatic data, that may lack some or all of these strong statistical regularities. In this paper we consider the general question of how to construct deep architectures with small learning complexity on general non-Euclidean domains, which are typically unknown and need to be estimated from the data. In particular, we develop an extension of Spectral Networks which incorporates a Graph Estimation procedure, that we test on large-scale classification problems, matching or improving over Dropout Networks with far less parameters to estimate.},
+	journaltitle = {{arXiv}:1506.05163 [cs]},
+	author = {Henaff, Mikael and Bruna, Joan and {LeCun}, Yann},
+	urldate = {2019-06-16},
+	date = {2015-06-16},
+	eprinttype = {arxiv},
+	eprint = {1506.05163},
+	keywords = {Computer Science - Computer Vision and Pattern Recognition, Computer Science - Machine Learning, Computer Science - Neural and Evolutionary Computing}
+}
+
+@article{boscaini_learning_2016,
+	title = {Learning shape correspondence with anisotropic convolutional neural networks},
+	url = {http://arxiv.org/abs/1605.06437},
+	abstract = {Establishing correspondence between shapes is a fundamental problem in geometry processing, arising in a wide variety of applications. The problem is especially difficult in the setting of non-isometric deformations, as well as in the presence of topological noise and missing parts, mainly due to the limited capability to model such deformations axiomatically. Several recent works showed that invariance to complex shape transformations can be learned from examples. In this paper, we introduce an intrinsic convolutional neural network architecture based on anisotropic diffusion kernels, which we term Anisotropic Convolutional Neural Network ({ACNN}). In our construction, we generalize convolutions to non-Euclidean domains by constructing a set of oriented anisotropic diffusion kernels, creating in this way a local intrinsic polar representation of the data (`patch'), which is then correlated with a filter. Several cascades of such filters, linear, and non-linear operators are stacked to form a deep neural network whose parameters are learned by minimizing a task-specific cost. We use {ACNNs} to effectively learn intrinsic dense correspondences between deformable shapes in very challenging settings, achieving state-of-the-art results on some of the most difficult recent correspondence benchmarks.},
+	journaltitle = {{arXiv}:1605.06437 [cs]},
+	author = {Boscaini, Davide and Masci, Jonathan and Rodolà, Emanuele and Bronstein, Michael M.},
+	urldate = {2019-06-16},
+	date = {2016-05-20},
+	eprinttype = {arxiv},
+	eprint = {1605.06437},
+	keywords = {Computer Science - Computer Vision and Pattern Recognition}
+}
+
+@article{masci_geodesic_2015,
+	title = {Geodesic convolutional neural networks on Riemannian manifolds},
+	url = {http://arxiv.org/abs/1501.06297},
+	abstract = {Feature descriptors play a crucial role in a wide range of geometry analysis and processing applications, including shape correspondence, retrieval, and segmentation. In this paper, we introduce Geodesic Convolutional Neural Networks ({GCNN}), a generalization of the convolutional networks ({CNN}) paradigm to non-Euclidean manifolds. Our construction is based on a local geodesic system of polar coordinates to extract "patches", which are then passed through a cascade of filters and linear and non-linear operators. The coefficients of the filters and linear combination weights are optimization variables that are learned to minimize a task-specific cost function. We use {GCNN} to learn invariant shape features, allowing to achieve state-of-the-art performance in problems such as shape description, retrieval, and correspondence.},
+	journaltitle = {{arXiv}:1501.06297 [cs]},
+	author = {Masci, Jonathan and Boscaini, Davide and Bronstein, Michael M. and Vandergheynst, Pierre},
+	urldate = {2019-06-16},
+	date = {2015-01-26},
+	eprinttype = {arxiv},
+	eprint = {1501.06297},
+	keywords = {Computer Science - Computer Vision and Pattern Recognition}
+}
+
+@article{kipf_semi-supervised_2016,
+	title = {Semi-Supervised Classification with Graph Convolutional Networks},
+	url = {http://arxiv.org/abs/1609.02907},
+	abstract = {We present a scalable approach for semi-supervised learning on graph-structured data that is based on an efficient variant of convolutional neural networks which operate directly on graphs. We motivate the choice of our convolutional architecture via a localized first-order approximation of spectral graph convolutions. Our model scales linearly in the number of graph edges and learns hidden layer representations that encode both local graph structure and features of nodes. In a number of experiments on citation networks and on a knowledge graph dataset we demonstrate that our approach outperforms related methods by a significant margin.},
+	journaltitle = {{arXiv}:1609.02907 [cs, stat]},
+	author = {Kipf, Thomas N. and Welling, Max},
+	urldate = {2019-06-16},
+	date = {2016-09-09},
+	eprinttype = {arxiv},
+	eprint = {1609.02907},
+	keywords = {Computer Science - Machine Learning, Statistics - Machine Learning}
+}
+
+@incollection{ferrari_saliency_2018,
+	location = {Cham},
+	title = {Saliency Detection in 360\$\${\textasciicircum}{\textbackslash}circ \$\$∘ Videos},
+	volume = {11211},
+	isbn = {978-3-030-01233-5 978-3-030-01234-2},
+	url = {http://link.springer.com/10.1007/978-3-030-01234-2_30},
+	abstract = {This paper presents a novel spherical convolutional neural network based scheme for saliency detection for 360◦ videos. Speciﬁcally, in our spherical convolution neural network deﬁnition, kernel is deﬁned on a spherical crown, and the convolution involves the rotation of the kernel along the sphere. Considering that the 360◦ videos are usually stored with equirectangular panorama, we propose to implement the spherical convolution on panorama by stretching and rotating the kernel based on the location of patch to be convolved. Compared with existing spherical convolution, our deﬁnition has the parameter sharing property, which would greatly reduce the parameters to be learned. We further take the temporal coherence of the viewing process into consideration, and propose a sequential saliency detection by leveraging a spherical U-Net. To validate our approach, we construct a large-scale 360◦ videos saliency detection benchmark that consists of 104 360◦ videos viewed by 20+ human subjects. Comprehensive experiments validate the effectiveness of our spherical U-net for 360◦ video saliency detection.},
+	pages = {504--520},
+	booktitle = {Computer Vision – {ECCV} 2018},
+	publisher = {Springer International Publishing},
+	author = {Zhang, Ziheng and Xu, Yanyu and Yu, Jingyi and Gao, Shenghua},
+	editor = {Ferrari, Vittorio and Hebert, Martial and Sminchisescu, Cristian and Weiss, Yair},
+	urldate = {2019-06-15},
+	date = {2018},
+	langid = {english},
+	doi = {10.1007/978-3-030-01234-2_30}
+}
+
+@article{su_kernel_nodate,
+	title = {Kernel Transformer Networks for Compact Spherical Convolution},
+	abstract = {Ideally, 360◦ imagery could inherit the deep convolutional neural networks ({CNNs}) already trained with great success on perspective projection images. However, existing methods to transfer {CNNs} from perspective to spherical images introduce signiﬁcant computational costs and/or degradations in accuracy. We present the Kernel Transformer Network ({KTN}) to efﬁciently transfer convolution kernels from perspective images to the equirectangular projection of 360◦ images. Given a source {CNN} for perspective images as input, the {KTN} produces a function parameterized by a polar angle and kernel as output. Given a novel 360◦ image, that function in turn can compute convolutions for arbitrary layers and kernels as would the source {CNN} on the corresponding tangent plane projections. Distinct from all existing methods, {KTNs} allow model transfer: the same model can be applied to different source {CNNs} with the same base architecture. This enables application to multiple recognition tasks without re-training the {KTN}. Validating our approach with multiple source {CNNs} and datasets, we show that {KTNs} improve the state of the art for spherical convolution. {KTNs} successfully preserve the source {CNN}’s accuracy, while offering transferability, scalability to typical image resolutions, and, in many cases, a substantially lower memory footprint1.},
+	pages = {10},
+	author = {Su, Yu-Chuan and Grauman, Kristen},
+	langid = {english}
+}
+
+@inproceedings{fakour-sevom_360_2018,
+	location = {Funchal, Madeira, Portugal},
+	title = {360 Panorama Super-resolution using Deep Convolutional Networks:},
+	isbn = {978-989-758-290-5},
+	url = {http://www.scitepress.org/DigitalLibrary/Link.aspx?doi=10.5220/0006618901590165},
+	doi = {10.5220/0006618901590165},
+	shorttitle = {360 Panorama Super-resolution using Deep Convolutional Networks},
+	abstract = {Super-resolution, Virtual Reality, Equirectangular Panorama, Deep Convolutional Neural Network.},
+	eventtitle = {International Conference on Computer Vision Theory and Applications},
+	pages = {159--165},
+	booktitle = {Proceedings of the 13th International Joint Conference on Computer Vision, Imaging and Computer Graphics Theory and Applications},
+	publisher = {{SCITEPRESS} - Science and Technology Publications},
+	author = {Fakour-Sevom, Vida and Guldogan, Esin and Kämäräinen, Joni-Kristian},
+	urldate = {2019-06-15},
+	date = {2018},
+	langid = {english}
+}
+
+@inproceedings{zhao_distortion-aware_2018,
+	location = {Stockholm, Sweden},
+	title = {Distortion-aware {CNNs} for Spherical Images},
+	isbn = {978-0-9992411-2-7},
+	url = {https://www.ijcai.org/proceedings/2018/167},
+	doi = {10.24963/ijcai.2018/167},
+	abstract = {Convolutional neural networks are widely used in computer vision applications. Although they have achieved great success, these networks can not be applied to 360◦ spherical images directly due to varying distortion effect. In this paper, we present distortion-aware convolutional network for spherical images. For each pixel, our network samples a non-regular grid based on its distortion level, and convolves the sampled grid using square kernels shared by all pixels. The network successively approximates large image patches from different tangent planes of viewing sphere with small local sampling grids, thus improves the computational efﬁciency. Our method also deals with the boundary problem, which is an inherent issue for spherical images. To evaluate our method, we apply our network in spherical image classiﬁcation problems based on transformed {MNIST} and {CIFAR}-10 datasets. Compared with the baseline method, our method can get much better performance. We also analyze the variants of our network.},
+	eventtitle = {Twenty-Seventh International Joint Conference on Artificial Intelligence \{{IJCAI}-18\}},
+	pages = {1198--1204},
+	booktitle = {Proceedings of the Twenty-Seventh International Joint Conference on Artificial Intelligence},
+	publisher = {International Joint Conferences on Artificial Intelligence Organization},
+	author = {Zhao, Qiang and Zhu, Chen and Dai, Feng and Ma, Yike and Jin, Guoqing and Zhang, Yongdong},
+	urldate = {2019-06-15},
+	date = {2018-07},
+	langid = {english}
+}
+
+@incollection{ferrari_distortion-aware_2018,
+	location = {Cham},
+	title = {Distortion-Aware Convolutional Filters for Dense Prediction in Panoramic Images},
+	volume = {11220},
+	isbn = {978-3-030-01269-4 978-3-030-01270-0},
+	url = {http://link.springer.com/10.1007/978-3-030-01270-0_43},
+	abstract = {There is a high demand of 3D data for 360◦ panoramic images and videos, pushed by the growing availability on the market of specialized hardware for both capturing (e.g., omni-directional cameras) as well as visualizing in 3D (e.g., head mounted displays) panoramic images and videos. At the same time, 3D sensors able to capture 3D panoramic data are expensive and/or hardly available. To ﬁll this gap, we propose a learning approach for panoramic depth map estimation from a single image. Thanks to a speciﬁcally developed distortion-aware deformable convolution ﬁlter, our method can be trained by means of conventional perspective images, then used to regress depth for panoramic images, thus bypassing the effort needed to create annotated panoramic training dataset. We also demonstrate our approach for emerging tasks such as panoramic monocular {SLAM}, panoramic semantic segmentation and panoramic style transfer.},
+	pages = {732--750},
+	booktitle = {Computer Vision – {ECCV} 2018},
+	publisher = {Springer International Publishing},
+	author = {Tateno, Keisuke and Navab, Nassir and Tombari, Federico},
+	editor = {Ferrari, Vittorio and Hebert, Martial and Sminchisescu, Cristian and Weiss, Yair},
+	urldate = {2019-06-15},
+	date = {2018},
+	langid = {english},
+	doi = {10.1007/978-3-030-01270-0_43}
+}
+
+@article{feng_discriminative_2018,
+	title = {Discriminative analysis of the human cortex using spherical {CNNs} - a study on Alzheimer's disease diagnosis},
+	url = {http://arxiv.org/abs/1812.07749},
+	abstract = {In neuroimaging studies, the human cortex is commonly modeled as a sphere to preserve the topological structure of the cortical surface. Cortical neuroimaging measures hence can be modeled in spherical representation. In this work, we explore analyzing the human cortex using spherical {CNNs} in an Alzheimer's disease ({AD}) classification task using cortical morphometric measures derived from structural {MRI}. Our results show superior performance in classifying {AD} versus cognitively normal and in predicting {MCI} progression within two years, using structural {MRI} information only. This work demonstrates for the first time the potential of the spherical {CNNs} framework in the discriminative analysis of the human cortex and could be extended to other modalities and other neurological diseases.},
+	journaltitle = {{arXiv}:1812.07749 [cs]},
+	author = {Feng, Xinyang and Yang, Jie and Laine, Andrew F. and Angelini, Elsa D.},
+	urldate = {2019-06-15},
+	date = {2018-12-18},
+	eprinttype = {arxiv},
+	eprint = {1812.07749},
+	keywords = {Computer Science - Computer Vision and Pattern Recognition}
+}
+
+@incollection{chang_structure-aware_2018,
+	title = {Structure-Aware Convolutional Neural Networks},
+	url = {http://papers.nips.cc/paper/7287-structure-aware-convolutional-neural-networks.pdf},
+	pages = {11--20},
+	booktitle = {Advances in Neural Information Processing Systems 31},
+	publisher = {Curran Associates, Inc.},
+	author = {Chang, Jianlong and Gu, Jie and Wang, Lingfeng and {MENG}, {GAOFENG} and {XIANG}, {SHIMING} and Pan, Chunhong},
+	editor = {Bengio, S. and Wallach, H. and Larochelle, H. and Grauman, K. and Cesa-Bianchi, N. and Garnett, R.},
+	urldate = {2019-06-15},
+	date = {2018}
+}
+
+@article{khasanova_geometry_nodate,
+	title = {Geometry Aware Convolutional Filters for Omnidirectional Images Representation},
+	abstract = {Due to their wide ﬁeld of view, omnidirectional cameras are frequently used by autonomous vehicles, drones and robots for navigation and other computer vision tasks. The images captured by such cameras, are often analyzed and classiﬁed with techniques designed for planar images that unfortunately fail to properly handle the native geometry of such images and therefore results in suboptimal performance. In this paper we aim at improving popular deep convolutional neural networks so that they can properly take into account the speciﬁc properties of omnidirectional data. In particular we propose an algorithm that adapts convolutional layers, which often serve as a core building block of a {CNN}, to the properties of omnidirectional images. Thus, our ﬁlters adapt their shape and size to the location on the omnidirectional image. We show that our method is not limited to spherical surfaces and is able to incorporate the knowledge about any kind of projective geometry inside the deep learning network. As depicted by our experiments, our method outperforms the existing deep neural network techniques for omnidirectional image classiﬁcation and compression tasks.},
+	pages = {9},
+	author = {Khasanova, Renata and Frossard, Pascal},
+	langid = {english}
+}
+
+@article{krachmalnicoff_convolutional_2019,
+	title = {Convolutional Neural Networks on the {HEALPix} sphere: a pixel-based algorithm and its application to {CMB} data analysis},
+	url = {http://arxiv.org/abs/1902.04083},
+	shorttitle = {Convolutional Neural Networks on the {HEALPix} sphere},
+	abstract = {We describe a novel method for the application of Convolutional Neural Networks ({CNNs}) to fields defined on the sphere, using the {HEALPix} tessellation scheme. Specifically, We have developed a pixel-based approach to implement convolutional layers on the spherical surface, similarly to what is commonly done for {CNNs} in Euclidian space. The algorithm is fully integrable with existing libraries for {NNs} (e.g., {PyTorch} or {TensorFlow}). We present two applications: (i) recognition of handwritten digits projected on the sphere; (ii) estimation of cosmological parameter from Cosmic Microwave Background ({CMB}) simulated maps. We have built a simple {NN} architecture, consisting in four convolutional+pooling layers, and have used it for all the applications explored herein. For what concerns the handwritten digits, our {CNN} reaches an accuracy of about 95\%, comparable with other existing spherical {CNNs}. For {CMB} applications, we have tested the {CNN} on the estimation of a "mock" parameter, defining the angular scale at which the power spectrum of a Gaussian field projected on the sphere peaks. We have estimated this parameter directly from maps, in several cases: temperature and polarization, presence of noise and partial sky coverage. In all the cases, the {NN} performances are comparable with those from standard spectrum-based bayesian methods. We demonstrate, for the first time, the capability of {CNNs} to extract information from polarization fields and to distinguish between E and B-modes. Lastly, we have applied our {CNN} to the estimation of the Thomson scattering optical depth at reionization (tau) from simulated {CMB} maps. Even without any specific optimization of the {NN} architecture, we reach an accuracy comparable with standard bayesian methods. This work represents a first step towards the exploitation of {NNs} in {CMB} parameter estimation and demonstrates the feasibility of our approach.},
+	journaltitle = {{arXiv}:1902.04083 [astro-ph]},
+	author = {Krachmalnicoff, Nicoletta and Tomasi, Maurizio},
+	urldate = {2019-06-15},
+	date = {2019-02-11},
+	eprinttype = {arxiv},
+	eprint = {1902.04083},
+	keywords = {Astrophysics - Instrumentation and Methods for Astrophysics}
+}
+
+@article{worrall_cubenet:_2018,
+	title = {{CubeNet}: Equivariance to 3D Rotation and Translation},
+	url = {http://arxiv.org/abs/1804.04458},
+	shorttitle = {{CubeNet}},
+	abstract = {3D Convolutional Neural Networks are sensitive to transformations applied to their input. This is a problem because a voxelized version of a 3D object, and its rotated clone, will look unrelated to each other after passing through to the last layer of a network. Instead, an idealized model would preserve a meaningful representation of the voxelized object, while explaining the pose-difference between the two inputs. An equivariant representation vector has two components: the invariant identity part, and a discernable encoding of the transformation. Models that can't explain pose-differences risk "diluting" the representation, in pursuit of optimizing a classification or regression loss function. We introduce a Group Convolutional Neural Network with linear equivariance to translations and right angle rotations in three dimensions. We call this network {CubeNet}, reflecting its cube-like symmetry. By construction, this network helps preserve a 3D shape's global and local signature, as it is transformed through successive layers. We apply this network to a variety of 3D inference problems, achieving state-of-the-art on the {ModelNet}10 classification challenge, and comparable performance on the {ISBI} 2012 Connectome Segmentation Benchmark. To the best of our knowledge, this is the first 3D rotation equivariant {CNN} for voxel representations.},
+	journaltitle = {{arXiv}:1804.04458 [cs, stat]},
+	author = {Worrall, Daniel and Brostow, Gabriel},
+	urldate = {2019-06-15},
+	date = {2018-04-12},
+	eprinttype = {arxiv},
+	eprint = {1804.04458},
+	keywords = {Computer Science - Artificial Intelligence, Computer Science - Computer Vision and Pattern Recognition, Computer Science - Machine Learning, Statistics - Machine Learning}
+}
+
+@article{lenssen_group_2018,
+	title = {Group Equivariant Capsule Networks},
+	url = {http://arxiv.org/abs/1806.05086},
+	abstract = {We present group equivariant capsule networks, a framework to introduce guaranteed equivariance and invariance properties to the capsule network idea. Our work can be divided into two contributions. First, we present a generic routing by agreement algorithm defined on elements of a group and prove that equivariance of output pose vectors, as well as invariance of output activations, hold under certain conditions. Second, we connect the resulting equivariant capsule networks with work from the field of group convolutional networks. Through this connection, we provide intuitions of how both methods relate and are able to combine the strengths of both approaches in one deep neural network architecture. The resulting framework allows sparse evaluation of the group convolution operator, provides control over specific equivariance and invariance properties, and can use routing by agreement instead of pooling operations. In addition, it is able to provide interpretable and equivariant representation vectors as output capsules, which disentangle evidence of object existence from its pose.},
+	journaltitle = {{arXiv}:1806.05086 [cs]},
+	author = {Lenssen, Jan Eric and Fey, Matthias and Libuschewski, Pascal},
+	urldate = {2019-06-15},
+	date = {2018-06-13},
+	eprinttype = {arxiv},
+	eprint = {1806.05086},
+	keywords = {Computer Science - Computer Vision and Pattern Recognition}
+}
+
+@article{chidester_rotation_2018,
+	title = {Rotation Equivariance and Invariance in Convolutional Neural Networks},
+	url = {http://arxiv.org/abs/1805.12301},
+	abstract = {Performance of neural networks can be significantly improved by encoding known invariance for particular tasks. Many image classification tasks, such as those related to cellular imaging, exhibit invariance to rotation. We present a novel scheme using the magnitude response of the 2D-discrete-Fourier transform (2D-{DFT}) to encode rotational invariance in neural networks, along with a new, efficient convolutional scheme for encoding rotational equivariance throughout convolutional layers. We implemented this scheme for several image classification tasks and demonstrated improved performance, in terms of classification accuracy, time required to train the model, and robustness to hyperparameter selection, over a standard {CNN} and another state-of-the-art method.},
+	journaltitle = {{arXiv}:1805.12301 [cs, stat]},
+	author = {Chidester, Benjamin and Do, Minh N. and Ma, Jian},
+	urldate = {2019-06-15},
+	date = {2018-05-30},
+	eprinttype = {arxiv},
+	eprint = {1805.12301},
+	keywords = {Computer Science - Computer Vision and Pattern Recognition, Computer Science - Machine Learning, Statistics - Machine Learning}
+}
+
+@article{mcewen_novel_2011,
+	title = {A novel sampling theorem on the sphere},
+	volume = {59},
+	issn = {1053-587X, 1941-0476},
+	url = {http://arxiv.org/abs/1110.6298},
+	doi = {10.1109/TSP.2011.2166394},
+	abstract = {We develop a novel sampling theorem on the sphere and corresponding fast algorithms by associating the sphere with the torus through a periodic extension. The fundamental property of any sampling theorem is the number of samples required to represent a band-limited signal. To represent exactly a signal on the sphere band-limited at L, all sampling theorems on the sphere require O(L{\textasciicircum}2) samples. However, our sampling theorem requires less than half the number of samples of other equiangular sampling theorems on the sphere and an asymptotically identical, but smaller, number of samples than the Gauss-Legendre sampling theorem. The complexity of our algorithms scale as O(L{\textasciicircum}3), however, the continual use of fast Fourier transforms reduces the constant prefactor associated with the asymptotic scaling considerably, resulting in algorithms that are fast. Furthermore, we do not require any precomputation and our algorithms apply to both scalar and spin functions on the sphere without any change in computational complexity or computation time. We make our implementation of these algorithms available publicly and perform numerical experiments demonstrating their speed and accuracy up to very high band-limits. Finally, we highlight the advantages of our sampling theorem in the context of potential applications, notably in the field of compressive sampling.},
+	pages = {5876--5887},
+	number = {12},
+	journaltitle = {{IEEE} Transactions on Signal Processing},
+	shortjournal = {{IEEE} Trans. Signal Process.},
+	author = {{McEwen}, J. D. and Wiaux, Y.},
+	urldate = {2019-06-14},
+	date = {2011-12},
+	eprinttype = {arxiv},
+	eprint = {1110.6298},
+	keywords = {Astrophysics - Instrumentation and Methods for Astrophysics, Computer Science - Information Theory}
+}
+
+@article{gorski_healpix_2005,
+	title = {{HEALPix} -- a Framework for High Resolution Discretization, and Fast Analysis of Data Distributed on the Sphere},
+	volume = {622},
+	issn = {0004-637X, 1538-4357},
+	url = {http://arxiv.org/abs/astro-ph/0409513},
+	doi = {10.1086/427976},
+	abstract = {{HEALPix} -- the Hierarchical Equal Area iso-Latitude Pixelization -- is a versatile data structure with an associated library of computational algorithms and visualization software that supports fast scientific applications executable directly on very large volumes of astronomical data and large area surveys in the form of discretized spherical maps. Originally developed to address the data processing and analysis needs of the present generation of cosmic microwave background ({CMB}) experiments (e.g. {BOOMERanG}, {WMAP}), {HEALPix} can be expanded to meet many of the profound challenges that will arise in confrontation with the observational output of future missions and experiments, including e.g. Planck, Herschel, {SAFIR}, and the Beyond Einstein {CMB} polarization probe. In this paper we consider the requirements and constraints to be met in order to implement a sufficient framework for the efficient discretization and fast analysis/synthesis of functions defined on the sphere, and summarise how they are satisfied by {HEALPix}.},
+	pages = {759--771},
+	number = {2},
+	journaltitle = {The Astrophysical Journal},
+	shortjournal = {{ApJ}},
+	author = {Gorski, K. M. and Hivon, E. and Banday, A. J. and Wandelt, B. D. and Hansen, F. K. and Reinecke, M. and Bartelman, M.},
+	urldate = {2019-06-13},
+	date = {2005-04},
+	eprinttype = {arxiv},
+	eprint = {astro-ph/0409513},
+	keywords = {Astrophysics}
+}
+
+@article{baumgardner_icosahedral_1985,
+	title = {Icosahedral Discretization of the Two-Sphere},
+	volume = {22},
+	issn = {0036-1429, 1095-7170},
+	url = {http://epubs.siam.org/doi/10.1137/0722066},
+	doi = {10.1137/0722066},
+	abstract = {We present an almost uniform triangulation of the two-sphere, derived from the icosahedron, and describe a procedure for discretization of a partial differential equation using this triangular grid. The accuracy of our procedure is described by a strong theoretical estimate, and verified by large-scale numerical experiments. We also describe a data structure for this spherical discretization that allows fast computation on either a vector computer or an asynchronous parallel computer.},
+	pages = {1107--1115},
+	number = {6},
+	journaltitle = {{SIAM} Journal on Numerical Analysis},
+	shortjournal = {{SIAM} J. Numer. Anal.},
+	author = {Baumgardner, John R. and Frederickson, Paul O.},
+	urldate = {2019-06-13},
+	date = {1985-12},
+	langid = {english}
+}
+
+@incollection{kondor_clebsch_2018,
+	title = {Clebsch– Gordan Nets: a Fully Fourier Space Spherical Convolutional Neural Network},
+	url = {http://papers.nips.cc/paper/8215-clebschgordan-nets-a-fully-fourier-space-spherical-convolutional-neural-network.pdf},
+	shorttitle = {Clebsch– Gordan Nets},
+	pages = {10117--10126},
+	booktitle = {Advances in Neural Information Processing Systems 31},
+	publisher = {Curran Associates, Inc.},
+	author = {Kondor, Risi and Lin, Zhen and Trivedi, Shubhendu},
+	editor = {Bengio, S. and Wallach, H. and Larochelle, H. and Grauman, K. and Cesa-Bianchi, N. and Garnett, R.},
+	urldate = {2019-06-12},
+	date = {2018}
+}
+
+@article{neale_description_nodate,
+	title = {Description of the {NCAR} Community Atmosphere Model ({CAM} 5.0)},
+	pages = {289},
+	author = {Neale, Richard B and Gettelman, Andrew and Park, Sungsu and Chen, Chih-Chieh and Lauritzen, Peter H and Williamson, David L and Conley, Andrew J and Kinnison, Doug and Marsh, Dan and Smith, Anne K and Vitt, Francis and Garcia, Rolando and Lamarque, Jean-Francois and Mills, Mike and Tilmes, Simone and Morrison, Hugh and Cameron-Smith, Philip and Collins, William D and Iacono, Michael J and Easter, Richard C and Liu, Xiaohong and Ghan, Steven J and Rasch, Philip J and Taylor, Mark A},
+	langid = {english}
+}
+
+@inproceedings{zhirong_wu_3d_2015,
+	location = {Boston, {MA}, {USA}},
+	title = {3D {ShapeNets}: A deep representation for volumetric shapes},
+	isbn = {978-1-4673-6964-0},
+	url = {http://ieeexplore.ieee.org/document/7298801/},
+	doi = {10.1109/CVPR.2015.7298801},
+	shorttitle = {3D {ShapeNets}},
+	eventtitle = {2015 {IEEE} Conference on Computer Vision and Pattern Recognition ({CVPR})},
+	pages = {1912--1920},
+	booktitle = {2015 {IEEE} Conference on Computer Vision and Pattern Recognition ({CVPR})},
+	publisher = {{IEEE}},
+	author = {{Zhirong Wu} and Song, Shuran and Khosla, Aditya and {Fisher Yu} and {Linguang Zhang} and {Xiaoou Tang} and Xiao, Jianxiong},
+	urldate = {2019-06-06},
+	date = {2015-06},
+	langid = {english}
+}
+
+@incollection{racah_extremeweather:_2017,
+	title = {{ExtremeWeather}: A large-scale climate dataset for semi-supervised detection, localization, and understanding of extreme weather events},
+	url = {http://papers.nips.cc/paper/6932-extremeweather-a-large-scale-climate-dataset-for-semi-supervised-detection-localization-and-understanding-of-extreme-weather-events.pdf},
+	shorttitle = {{ExtremeWeather}},
+	pages = {3402--3413},
+	booktitle = {Advances in Neural Information Processing Systems 30},
+	publisher = {Curran Associates, Inc.},
+	author = {Racah, Evan and Beckham, Christopher and Maharaj, Tegan and Ebrahimi Kahou, Samira and Prabhat, Mr. and Pal, Chris},
+	editor = {Guyon, I. and Luxburg, U. V. and Bengio, S. and Wallach, H. and Fergus, R. and Vishwanathan, S. and Garnett, R.},
+	urldate = {2019-06-06},
+	date = {2017}
+}
+
+@article{ronneberger_u-net:_2015,
+	title = {U-Net: Convolutional Networks for Biomedical Image Segmentation},
+	url = {http://arxiv.org/abs/1505.04597},
+	shorttitle = {U-Net},
+	abstract = {There is large consent that successful training of deep networks requires many thousand annotated training samples. In this paper, we present a network and training strategy that relies on the strong use of data augmentation to use the available annotated samples more efficiently. The architecture consists of a contracting path to capture context and a symmetric expanding path that enables precise localization. We show that such a network can be trained end-to-end from very few images and outperforms the prior best method (a sliding-window convolutional network) on the {ISBI} challenge for segmentation of neuronal structures in electron microscopic stacks. Using the same network trained on transmitted light microscopy images (phase contrast and {DIC}) we won the {ISBI} cell tracking challenge 2015 in these categories by a large margin. Moreover, the network is fast. Segmentation of a 512x512 image takes less than a second on a recent {GPU}. The full implementation (based on Caffe) and the trained networks are available at http://lmb.informatik.uni-freiburg.de/people/ronneber/u-net .},
+	journaltitle = {{arXiv}:1505.04597 [cs]},
+	author = {Ronneberger, Olaf and Fischer, Philipp and Brox, Thomas},
+	urldate = {2019-06-04},
+	date = {2015-05-18},
+	eprinttype = {arxiv},
+	eprint = {1505.04597},
+	keywords = {Computer Science - Computer Vision and Pattern Recognition}
+}
+
+@online{noauthor_global_nodate,
+	title = {Global Historical Climate Network Daily - Description {\textbar} National Centers for Environmental Information ({NCEI}) formerly known as National Climatic Data Center ({NCDC})},
+	url = {https://www.ncdc.noaa.gov/ghcn-daily-description},
+	urldate = {2019-06-04}
+}
+
+@online{noauthor_computations_2019,
+	title = {Computations involving Lie groups and harmonic analysis: {AMLab}-Amsterdam/lie\_learn},
+	url = {https://github.com/AMLab-Amsterdam/lie_learn},
+	shorttitle = {Computations involving Lie groups and harmonic analysis},
+	urldate = {2019-02-19},
+	date = {2019-01-06},
+	note = {original-date: 2017-03-13T13:20:21Z},
+	keywords = {{DiffTypeGrid}}
+}
+
+@article{wehner_resolution_2015,
+	title = {Resolution Dependence of Future Tropical Cyclone Projections of {CAM}5.1 in the U.S. {CLIVAR} Hurricane Working Group Idealized Configurations},
+	volume = {28},
+	issn = {0894-8755},
+	url = {https://journals.ametsoc.org/doi/full/10.1175/JCLI-D-14-00311.1},
+	doi = {10.1175/JCLI-D-14-00311.1},
+	abstract = {The four idealized configurations of the U.S. {CLIVAR} Hurricane Working Group are integrated using the global Community Atmospheric Model version 5.1 at two different horizontal resolutions, approximately 100 and 25 km. The publicly released 0.9 × 1.3 configuration is a poor predictor of the sign of the 0.23 × 0.31 model configuration’s change in the total number of tropical storms in a warmer climate. However, it does predict the sign of the higher-resolution configuration’s change in the number of intense tropical cyclones in a warmer climate. In the 0.23 × 0.31 model configuration, both increased {CO}2 concentrations and elevated sea surface temperature ({SST}) independently lower the number of weak tropical storms and shorten their average duration. Conversely, increased {SST} causes more intense tropical cyclones and lengthens their average duration, resulting in a greater number of intense tropical cyclone days globally. Increased {SST} also increased maximum tropical storm instantaneous precipitation rates across all storm intensities. It was found that while a measure of maximum potential intensity based on climatological mean quantities adequately predicts the 0.23 × 0.31 model’s forced response in its most intense simulated tropical cyclones, a related measure of cyclogenesis potential fails to predict the model’s actual cyclogenesis response to warmer {SSTs}. These analyses lead to two broader conclusions: 1) Projections of future tropical storm activity obtained by a direct tracking of tropical storms simulated by coarse-resolution climate models must be interpreted with caution. 2) Projections of future tropical cyclogenesis obtained from metrics of model behavior that are based solely on changes in long-term climatological fields and tuned to historical records must also be interpreted with caution.},
+	pages = {3905--3925},
+	number = {10},
+	journaltitle = {Journal of Climate},
+	shortjournal = {J. Climate},
+	author = {Wehner, Michael and {Prabhat} and Reed, Kevin A. and Stone, Dáithí and Collins, William D. and Bacmeister, Julio},
+	urldate = {2019-05-27},
+	date = {2015-02-12}
+}
+
+@article{su_pano2vid:_nodate,
+	title = {Pano2Vid: Automatic cinematography for watching 360 videos},
+	abstract = {We introduce the novel task of Pano2Vid — automatic cinematography in panoramic 360◦ videos. Given a 360◦ video, the goal is to direct an imaginary camera to virtually capture natural-looking normal ﬁeld-of-view ({NFOV}) video. By selecting “where to look” within the panorama at each time step, Pano2Vid aims to free both the videographer and the end viewer from the task of determining what to watch. Towards this goal, we ﬁrst compile a dataset of 360◦ videos downloaded from the web, together with human-edited {NFOV} camera trajectories to facilitate evaluation. Next, we propose {AutoCam}, a data-driven approach to solve the Pano2Vid task. {AutoCam} leverages {NFOV} web video to discriminatively identify space-time “glimpses” of interest at each time instant, and then uses dynamic programming to select optimal humanlike camera trajectories. Through experimental evaluation on multiple newly deﬁned Pano2Vid performance measures against several baselines, we show that our method successfully produces informative videos that could conceivably have been captured by human videographers.},
+	pages = {16},
+	author = {Su, Yu-Chuan and Jayaraman, Dinesh and Grauman, Kristen},
+	langid = {english}
+}
+
+@incollection{su_learning_2017,
+	title = {Learning Spherical Convolution for Fast Features from 360 Imagery},
+	url = {http://papers.nips.cc/paper/6656-learning-spherical-convolution-for-fast-features-from-360-imagery.pdf},
+	pages = {529--539},
+	booktitle = {Advances in Neural Information Processing Systems 30},
+	publisher = {Curran Associates, Inc.},
+	author = {Su, Yu-Chuan and Grauman, Kristen},
+	editor = {Guyon, I. and Luxburg, U. V. and Bengio, S. and Wallach, H. and Fergus, R. and Vishwanathan, S. and Garnett, R.},
+	urldate = {2019-04-12},
+	date = {2017}
+}
+
+@article{cohen_group_2016,
+	title = {Group Equivariant Convolutional Networks},
+	url = {http://arxiv.org/abs/1602.07576},
+	abstract = {We introduce Group equivariant Convolutional Neural Networks (G-{CNNs}), a natural generalization of convolutional neural networks that reduces sample complexity by exploiting symmetries. G-{CNNs} use G-convolutions, a new type of layer that enjoys a substantially higher degree of weight sharing than regular convolution layers. G-convolutions increase the expressive capacity of the network without increasing the number of parameters. Group convolution layers are easy to use and can be implemented with negligible computational overhead for discrete groups generated by translations, reflections and rotations. G-{CNNs} achieve state of the art results on {CIFAR}10 and rotated {MNIST}.},
+	journaltitle = {{arXiv}:1602.07576 [cs, stat]},
+	author = {Cohen, Taco S. and Welling, Max},
+	urldate = {2019-06-04},
+	date = {2016-02-24},
+	eprinttype = {arxiv},
+	eprint = {1602.07576},
+	keywords = {Computer Science - Machine Learning, Statistics - Machine Learning}
+}
+
+@article{monti_geometric_2016,
+	title = {Geometric deep learning on graphs and manifolds using mixture model {CNNs}},
+	url = {http://arxiv.org/abs/1611.08402},
+	abstract = {Deep learning has achieved a remarkable performance breakthrough in several fields, most notably in speech recognition, natural language processing, and computer vision. In particular, convolutional neural network ({CNN}) architectures currently produce state-of-the-art performance on a variety of image analysis tasks such as object detection and recognition. Most of deep learning research has so far focused on dealing with 1D, 2D, or 3D Euclidean-structured data such as acoustic signals, images, or videos. Recently, there has been an increasing interest in geometric deep learning, attempting to generalize deep learning methods to non-Euclidean structured data such as graphs and manifolds, with a variety of applications from the domains of network analysis, computational social science, or computer graphics. In this paper, we propose a unified framework allowing to generalize {CNN} architectures to non-Euclidean domains (graphs and manifolds) and learn local, stationary, and compositional task-specific features. We show that various non-Euclidean {CNN} methods previously proposed in the literature can be considered as particular instances of our framework. We test the proposed method on standard tasks from the realms of image-, graph- and 3D shape analysis and show that it consistently outperforms previous approaches.},
+	journaltitle = {{arXiv}:1611.08402 [cs]},
+	author = {Monti, Federico and Boscaini, Davide and Masci, Jonathan and Rodolà, Emanuele and Svoboda, Jan and Bronstein, Michael M.},
+	urldate = {2019-06-03},
+	date = {2016-11-25},
+	eprinttype = {arxiv},
+	eprint = {1611.08402},
+	keywords = {Computer Science - Computer Vision and Pattern Recognition}
+}
+
 @article{lee_spherephd:_2018,
 	title = {{SpherePHD}: Applying {CNNs} on a Spherical {PolyHeDron} Representation of 360 degree Images},
 	url = {http://arxiv.org/abs/1811.08196},
@@ -72,23 +524,6 @@
 	langid = {english}
 }
 
-@article{keiner_fast_2008-1,
-	title = {Fast evaluation of quadrature formulae on the sphere},
-	volume = {77},
-	issn = {0025-5718, 1088-6842},
-	url = {http://www.ams.org/journal-getitem?pii=S0025-5718-07-02029-7},
-	doi = {10.1090/S0025-5718-07-02029-7},
-	abstract = {Recently, a fast approximate algorithm for the evaluation of expansions in terms of standard L2 S2 -orthonormal spherical harmonics at arbitrary nodes on the sphere S2 has been proposed in [S. Kunis and D. Potts. Fast spherical Fourier algorithms. J. Comput. Appl. Math., 161:75–98, 2003]. The aim of this paper is to develop a new fast algorithm for the adjoint problem which can be used to compute expansion coeﬃcients from sampled data by means of quadrature rules.},
-	pages = {397--419},
-	number = {261},
-	journaltitle = {Mathematics of Computation},
-	shortjournal = {Math. Comp.},
-	author = {Keiner, Jens and Potts, Daniel},
-	urldate = {2019-05-27},
-	date = {2008-01-01},
-	langid = {english}
-}
-
 @article{driscoll_computing_1994,
 	title = {Computing Fourier Transforms and Convolutions on the 2-Sphere},
 	volume = {15},
@@ -104,23 +539,6 @@
 	urldate = {2019-05-27},
 	date = {1994-06-01}
 }
-
-@article{wehner_resolution_2015,
-	title = {Resolution Dependence of Future Tropical Cyclone Projections of {CAM}5.1 in the U.S. {CLIVAR} Hurricane Working Group Idealized Configurations},
-	volume = {28},
-	issn = {0894-8755},
-	url = {https://journals.ametsoc.org/doi/full/10.1175/JCLI-D-14-00311.1},
-	doi = {10.1175/JCLI-D-14-00311.1},
-	abstract = {The four idealized configurations of the U.S. {CLIVAR} Hurricane Working Group are integrated using the global Community Atmospheric Model version 5.1 at two different horizontal resolutions, approximately 100 and 25 km. The publicly released 0.9° × 1.3° configuration is a poor predictor of the sign of the 0.23° × 0.31° model configuration’s change in the total number of tropical storms in a warmer climate. However, it does predict the sign of the higher-resolution configuration’s change in the number of intense tropical cyclones in a warmer climate. In the 0.23° × 0.31° model configuration, both increased {CO}2 concentrations and elevated sea surface temperature ({SST}) independently lower the number of weak tropical storms and shorten their average duration. Conversely, increased {SST} causes more intense tropical cyclones and lengthens their average duration, resulting in a greater number of intense tropical cyclone days globally. Increased {SST} also increased maximum tropical storm instantaneous precipitation rates across all storm intensities. It was found that while a measure of maximum potential intensity based on climatological mean quantities adequately predicts the 0.23° × 0.31° model’s forced response in its most intense simulated tropical cyclones, a related measure of cyclogenesis potential fails to predict the model’s actual cyclogenesis response to warmer {SSTs}. These analyses lead to two broader conclusions: 1) Projections of future tropical storm activity obtained by a direct tracking of tropical storms simulated by coarse-resolution climate models must be interpreted with caution. 2) Projections of future tropical cyclogenesis obtained from metrics of model behavior that are based solely on changes in long-term climatological fields and tuned to historical records must also be interpreted with caution.},
-	pages = {3905--3925},
-	number = {10},
-	journaltitle = {Journal of Climate},
-	shortjournal = {J. Climate},
-	author = {Wehner, Michael and {Prabhat} and Reed, Kevin A. and Stone, Dáithí and Collins, William D. and Bacmeister, Julio},
-	urldate = {2019-05-27},
-	date = {2015-02-12}
-}
-
 @article{racah_extremeweather:_2016,
 	title = {{ExtremeWeather}: A large-scale climate dataset for semi-supervised detection, localization, and understanding of extreme weather events},
 	url = {http://arxiv.org/abs/1612.02095},
@@ -157,19 +575,6 @@
 	langid = {english}
 }
 
-@article{keriven_universal_2019,
-	title = {Universal Invariant and Equivariant Graph Neural Networks},
-	url = {http://arxiv.org/abs/1905.04943},
-	abstract = {Graph Neural Networks ({GNN}) come in many flavors, but should always be either invariant (permutation of the nodes of the input graph does not affect the output) or equivariant (permutation of the input permutes the output). In this paper, we consider a specific class of invariant and equivariant networks, for which we prove new universality theorems. More precisely, we consider networks with a single hidden layer, obtained by summing channels formed by applying an equivariant linear operator, a pointwise non-linearity and either an invariant or equivariant linear operator. Recently, Maron et al. (2019) showed that by allowing higher-order tensorization inside the network, universal invariant {GNNs} can be obtained. As a first contribution, we propose an alternative proof of this result, which relies on the Stone-Weierstrass theorem for algebra of real-valued functions. Our main contribution is then an extension of this result to the equivariant case, which appears in many practical applications but has been less studied from a theoretical point of view. The proof relies on a new generalized Stone-Weierstrass theorem for algebra of equivariant functions, which is of independent interest. Finally, unlike many previous settings that consider a fixed number of nodes, our results show that a {GNN} defined by a single set of parameters can approximate uniformly well a function defined on graphs of varying size.},
-	journaltitle = {{arXiv}:1905.04943 [cs, stat]},
-	author = {Keriven, Nicolas and Peyré, Gabriel},
-	urldate = {2019-05-25},
-	date = {2019-05-13},
-	eprinttype = {arxiv},
-	eprint = {1905.04943},
-	keywords = {Computer Science - Machine Learning, Statistics - Machine Learning}
-}
-
 @article{hanocka_meshcnn:_2018,
 	title = {{MeshCNN}: A Network with an Edge},
 	url = {http://arxiv.org/abs/1809.05910},
@@ -203,7 +608,7 @@
 	keywords = {Computer Science - Computer Vision and Pattern Recognition}
 }
 
-@article{keriven_universal_2019-1,
+@article{keriven_universal_2019,
 	title = {Universal Invariant and Equivariant Graph Neural Networks},
 	url = {http://arxiv.org/abs/1905.04943},
 	abstract = {Graph Neural Networks ({GNN}) come in many flavors, but should always be either invariant (permutation of the nodes of the input graph does not affect the output) or equivariant (permutation of the input permutes the output). In this paper, we consider a specific class of invariant and equivariant networks, for which we prove new universality theorems. More precisely, we consider networks with a single hidden layer, obtained by summing channels formed by applying an equivariant linear operator, a pointwise non-linearity and either an invariant or equivariant linear operator. Recently, Maron et al. (2019) showed that by allowing higher-order tensorization inside the network, universal invariant {GNNs} can be obtained. As a first contribution, we propose an alternative proof of this result, which relies on the Stone-Weierstrass theorem for algebra of real-valued functions. Our main contribution is then an extension of this result to the equivariant case, which appears in many practical applications but has been less studied from a theoretical point of view. The proof relies on a new generalized Stone-Weierstrass theorem for algebra of equivariant functions, which is of independent interest. Finally, unlike many previous settings that consider a fixed number of nodes, our results show that a {GNN} defined by a single set of parameters can approximate uniformly well a function defined on graphs of varying size.},
@@ -261,14 +666,6 @@
 	urldate = {2019-04-25}
 }
 
-@article{su_pano2vid:_nodate,
-	title = {Pano2Vid: Automatic cinematography for watching 360◦ videos},
-	abstract = {We introduce the novel task of Pano2Vid — automatic cinematography in panoramic 360◦ videos. Given a 360◦ video, the goal is to direct an imaginary camera to virtually capture natural-looking normal ﬁeld-of-view ({NFOV}) video. By selecting “where to look” within the panorama at each time step, Pano2Vid aims to free both the videographer and the end viewer from the task of determining what to watch. Towards this goal, we ﬁrst compile a dataset of 360◦ videos downloaded from the web, together with human-edited {NFOV} camera trajectories to facilitate evaluation. Next, we propose {AutoCam}, a data-driven approach to solve the Pano2Vid task. {AutoCam} leverages {NFOV} web video to discriminatively identify space-time “glimpses” of interest at each time instant, and then uses dynamic programming to select optimal humanlike camera trajectories. Through experimental evaluation on multiple newly deﬁned Pano2Vid performance measures against several baselines, we show that our method successfully produces informative videos that could conceivably have been captured by human videographers.},
-	pages = {16},
-	author = {Su, Yu-Chuan and Jayaraman, Dinesh and Grauman, Kristen},
-	langid = {english}
-}
-
 @online{noauthor_pano2vid_nodate,
 	title = {Pano2Vid},
 	url = {http://vision.cs.utexas.edu/projects/Pano2Vid/#Pano2Vid},
@@ -319,12 +716,6 @@
 	pages = {9},
 	author = {Armeni, Iro and Sax, Alexander and Zamir, Amir R and Savarese, Silvio},
 	langid = {english}
-}
-
-@online{noauthor_large_nodate-1,
-	title = {Large Scale Parsing},
-	url = {http://buildingparser.stanford.edu/dataset.html},
-	urldate = {2019-04-24}
 }
 
 @article{khalid_optimal-dimensionality_2014,
@@ -414,18 +805,6 @@
 	keywords = {convolutional neural networks, navigation via learning, spherical camera, vision-based robot navigation}
 }
 
-@incollection{su_learning_2017,
-	title = {Learning Spherical Convolution for Fast Features from 360° Imagery},
-	url = {http://papers.nips.cc/paper/6656-learning-spherical-convolution-for-fast-features-from-360-imagery.pdf},
-	pages = {529--539},
-	booktitle = {Advances in Neural Information Processing Systems 30},
-	publisher = {Curran Associates, Inc.},
-	author = {Su, Yu-Chuan and Grauman, Kristen},
-	editor = {Guyon, I. and Luxburg, U. V. and Bengio, S. and Wallach, H. and Fergus, R. and Vishwanathan, S. and Garnett, R.},
-	urldate = {2019-04-12},
-	date = {2017}
-}
-
 @inproceedings{sinha_deep_2016,
 	title = {Deep Learning 3D Shape Surfaces Using Geometry Images},
 	isbn = {978-3-319-46466-4},
@@ -479,6 +858,7 @@
 	urldate = {2019-04-12},
 	date = {2018-12-14}
 }
+
 @book{noauthor_proceedings_2014,
 	location = {New York, {NY}},
 	title = {Proceedings of {ELM}-2014 volume 1: algorithms and theories},
@@ -621,7 +1001,6 @@ Historically, these ideas were first stated in the context of classical electrom
 	author = {Kostelec, Peter J},
 	langid = {english}
 }
-
 @article{zhu_negative_2018,
 	title = {Negative Log Likelihood Ratio Loss for Deep Neural Network Classification},
 	url = {http://arxiv.org/abs/1804.10690},
@@ -694,17 +1073,6 @@ Historically, these ideas were first stated in the context of classical electrom
 	urldate = {2019-02-19},
 	langid = {english},
 	doi = {http://dx.doi.org/10.1090/S0025-5718-07-02029-7}
-}
-
-@software{noauthor_computations_2019,
-	title = {Computations involving Lie groups and harmonic analysis: {AMLab}-Amsterdam/lie\_learn},
-	url = {https://github.com/AMLab-Amsterdam/lie_learn},
-	shorttitle = {Computations involving Lie groups and harmonic analysis},
-	publisher = {{AMLAB}},
-	urldate = {2019-02-19},
-	date = {2019-01-06},
-	note = {original-date: 2017-03-13T13:20:21Z},
-	keywords = {{DiffTypeGrid}}
 }
 
 @article{cohen_intertwiners_2018,
