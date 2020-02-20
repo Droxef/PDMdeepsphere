@@ -5,9 +5,14 @@ Frédérick Gusset, [Nathanaël Perraudin][nath], [Michaël Defferrard][mdeff]
 [nath]: https://perraudin.info
 [mdeff]: https://deff.ch
 
-The code in this repository is based on [DeepSphere](https://github.com/SwissDataScienceCenter/DeepSphere) and regroups all experiments performed in the master thesis ["An empirical study of spherical convolutional neural networks"][thesis]. This master project was performed in the LTS2 lab at EPFL, during Spring semester 2019.
+The code in this repository is based on [DeepSphere](https://github.com/SwissDataScienceCenter/DeepSphere) and contains all the experiments performed for the master thesis ["An empirical study of spherical convolutional neural networks"][thesis].
+The project was performed in the [LTS2 lab at EPFL](https://lts2.epfl.ch) during the spring semester of 2019, under the supervision of [Nathanaël Perraudin][nath] and [Michaël Defferrard][mdeff].
+
+**The thesis resulted in a [paper published at ICLR'20][paper].**\
+**The most up-to-date code is available at <https://github.com/deepsphere/code-iclr20>.**
 
 [thesis]: https://infoscience.epfl.ch/record/267531
+[paper]: https://openreview.net/forum?id=B1e3OlStPB
 
 ## Installation
 
@@ -69,7 +74,6 @@ The different benchmarks are regrouped in the [Experiment](Experiments) folder, 
 
 [cached data]: (Experiments/SHREC17/demo_sphere_SHREC17-Cached_data.ipynb)
 [equiangular]: (Experiments/SHREC17/demo_sphere_SHREC17_equiangular.ipynb)
-
 
 ## License
 
